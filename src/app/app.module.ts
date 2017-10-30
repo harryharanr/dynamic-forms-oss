@@ -14,6 +14,7 @@ import { BreadcrumbsComponent } from './layouts/admin/breadcrumbs/breadcrumbs.co
 import { TitleComponent } from './layouts/admin/title/title.component';
 import {ScrollModule} from './scroll/scroll.module';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {LocationStrategy, PathLocationStrategy} from '@angular/common';
     AdminLayoutComponent,
     AuthLayoutComponent,
     BreadcrumbsComponent,
-    TitleComponent
+    TitleComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -38,4 +40,5 @@ import {LocationStrategy, PathLocationStrategy} from '@angular/common';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {}
