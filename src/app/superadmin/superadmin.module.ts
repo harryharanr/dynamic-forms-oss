@@ -23,6 +23,20 @@ import {ScrollModule} from '../scroll/scroll.module';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HospitalComponent } from './components/hospital/hospital.component';
+import { AddHospitalComponent } from './components/hospital/add-hospital/add-hospital.component';
+import { AddBranchComponent } from './components/hospital/add-branch/add-branch.component';
+import { UserComponent } from './components/user/user.component';
+import { AddHospitalAdminComponent } from './components/user/add-hospital-admin/add-hospital-admin.component';
+import { AddBranchAdminComponent } from './components/user/add-branch-admin/add-branch-admin.component';
+import { AddSurgeonComponent } from './components/user/add-surgeon/add-surgeon.component';
+import { AddSupportStaffComponent } from './components/user/add-support-staff/add-support-staff.component';
+
+import { RegionComponent } from './components/region/region.component';
+import { AddRegionComponent } from './components/region/add-region/add-region.component';
+
+import { FormsComponent } from './components/forms/forms.component';
+import { AddFormComponent } from './components/forms/add-form/add-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +44,19 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AdminLayoutComponent,
     BreadcrumbsComponent,
     TitleComponent,
-    DashboardComponent
+    DashboardComponent,
+    HospitalComponent,
+    AddHospitalComponent,
+    AddBranchComponent,
+    UserComponent,
+    AddHospitalAdminComponent,
+    AddBranchAdminComponent,
+    AddSurgeonComponent,
+    AddSupportStaffComponent,
+    RegionComponent,
+    AddRegionComponent,
+    FormsComponent,
+    AddFormComponent
   ],
   imports: [
     CommonModule,

@@ -266,89 +266,117 @@
             <div class="sidebar_toggle"><a href="javascript:;"><i class="icon-close icons"></i></a></div>
             <div class="pcoded-inner-navbar main-menu" appAccordion slimScroll width="100%" height="100%" size="4px" color="#fff" opacity="0.3" allowPageScroll="false">
               <div>
-              <!-- <div *ngFor="let asideItems of menuItems.getAll()"> -->
-              <div *ngFor="let asideItems of menuItems.getAll()">
-                <div class="pcoded-navigatio-lavel" menu-title-theme="theme5" >{{asideItems.label}}</div>
-                <ul class="pcoded-item pcoded-left-item" item-border="none" item-border-style="solid" subitem-border="solid" *ngFor="let asideItem of asideItems.main" appAccordionLink group="{{asideItem.state}}">
+                  <div> <!--Side Menu begins here-->
+                      <ul class="pcoded-item pcoded-left-item" item-border="none" item-border-style="solid" subitem-border="solid" appAccordionLink>
+                        
+                        <li [routerLinkActive]="['active']" >
+                            <a routerLink='/superadmin/dashboard' appAccordionToggle>
+                              <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                              <span class="pcoded-mtext">Dashboard</span>
+                              <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        
+                        <li [routerLinkActive]="['active']" class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style6" appAccordionLink>
+                            <a class="active" href="javascript:;" appAccordionToggle>
+                              <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                              <span class="pcoded-mtext">Hospital Management</span>
+                              <span class="pcoded-mcaret"></span>
+                            </a>
+                            <ul class="pcoded-submenu">
+                              <li [routerLinkActive]="['active']">
+                                <a routerLink='/superadmin/hospital/add-hospital'>
+                                  <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                  <span class="pcoded-mtext">Add Hospital</span>
+                                  <span class="pcoded-mcaret"></span>
+                                </a>
+                              </li>
+                              <li [routerLinkActive]="['active']">
+                                <a routerLink='/superadmin/hospital/add-branch'>
+                                  <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                  <span class="pcoded-mtext">Add Branch</span>
+                                  <span class="pcoded-mcaret"></span>
+                                </a>
+                              </li>
+                            </ul>
+                        </li>
 
-                    <li class="active" >
-                        <a href="{{asideItem.external}}" target="{{asideItem.target ? '_blank' : '_self'}}" appAccordionToggle>
-                          <span class="pcoded-micon"><i class="{{ asideItem.icon }}"></i></span>
-                          <span class="pcoded-mtext">Test link</span>
-                          <span *ngFor="let asideBadge of asideItem.badge" class="pcoded-badge label label-{{ asideBadge.type }}">{{asideBadge.value}}</span>
-                          <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                  <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'external'" appAccordionLink group="{{asideItem.state}}">
-                    <a href="{{asideItem.external}}" target="{{asideItem.target ? '_blank' : '_self'}}" appAccordionToggle>
-                      <span class="pcoded-micon"><i class="{{ asideItem.icon }}"></i></span>
-                      <span class="pcoded-mtext">{{ asideItem.name }}</span>
-                      <span *ngFor="let asideBadge of asideItem.badge" class="pcoded-badge label label-{{ asideBadge.type }}">{{asideBadge.value}}</span>
-                      <span class="pcoded-mcaret"></span>
-                    </a>
-                  </li>
-
-                  
-  
-                  <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'link'" appAccordionLink group="{{asideItem.state}}">
-                    <a [routerLink]="['/', asideItem.main_state, asideItem.state]" target="{{asideItem.target ? '_blank' : '_self'}}" appAccordionToggle *ngIf="asideItem.main_state; else: mainContent">
-                      <span class="pcoded-micon"><i class="{{ asideItem.icon }}"></i></span>
-                      <span class="pcoded-mtext">{{ asideItem.name }}</span>
-                      <span *ngFor="let asideBadge of asideItem.badge" class="pcoded-badge label label-{{ asideBadge.type }}">{{asideBadge.value}}</span>
-                      <span class="pcoded-mcaret"></span>
-                    </a>
-                    <ng-template #mainContent>
-                      <a [routerLink]="['/', asideItem.state]" target="{{asideItem.target ? '_blank' : '_self'}}" appAccordionToggle>
-                        <span class="pcoded-micon"><i class="{{ asideItem.icon }}"></i></span>
-                        <span class="pcoded-mtext">{{ asideItem.name }}</span>
-                        <span *ngFor="let asideBadge of asideItem.badge" class="pcoded-badge label label-{{ asideBadge.type }}">{{asideBadge.value}}</span>
-                        <span class="pcoded-mcaret"></span>
-                      </a>
-                    </ng-template>
-                  </li>
-                  <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'sub'" class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style6" appAccordionLink group="{{asideItem.state}}">
-                    <a [routerLinkActive]="['active']" href="javascript:;" appAccordionToggle>
-                      <span class="pcoded-micon"><i class="{{ asideItem.icon }}"></i></span>
-                      <span class="pcoded-mtext">{{ asideItem.name }}</span>
-                      <span *ngFor="let asideBadge of asideItem.badge" class="pcoded-badge label label-{{ asideBadge.type }}">{{asideBadge.value}}</span>
-                      <span class="pcoded-mcaret"></span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                      <ng-template ngFor let-asideChildren [ngForOf]="asideItem.children">
-                      <li [routerLinkActive]="['active']" *ngIf="asideChildren.type !== 'sub'">
-                        <a [routerLink]="['/', asideItem.state, asideChildren.state]" target="{{asideChildren.target ? '_blank' : '_self'}}">
-                          <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                          <span class="pcoded-mtext">{{ asideChildren.name }} </span>
-                          <span *ngFor="let asideChildrenBadge of asideChildren.badge" class="pcoded-badge label label-{{ asideChildrenBadge.type }}">{{asideChildrenBadge.value}}</span>
-                          <span class="pcoded-mcaret"></span>
-                        </a>
-                      </li>
-  
-                      <li [routerLinkActive]="['active']" class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style6" *ngIf="asideChildren.type === 'sub'" appAccordionLink group="sub-toggled">
-                        <a href="javascript:;" appAccordionToggle>
-                          <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
-                          <span class="pcoded-mtext">{{ asideChildren.name }}</span>
-                          <span *ngFor="let asideChildrenBadge of asideChildren.badge" class="pcoded-badge label label-{{ asideChildrenBadge.type }}">{{asideChildrenBadge.value}}</span>
-                          <span class="pcoded-mcaret"></span>
-                        </a>
-                        <ul class="pcoded-submenu">
-                          <ng-template ngFor let-asideChildrenSub [ngForOf]="asideChildren.children">
-                            <li [routerLinkActive]="['active']" >
-                              <a [routerLink]="['/', asideItem.state, asideChildren.state, asideChildrenSub.state]" target="{{asideChildrenSub.target ? '_blank' : '_self'}}">
+                        <li [routerLinkActive]="['active']" class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style6" appAccordionLink>
+                          <a class="active" href="javascript:;" appAccordionToggle>
+                            <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                            <span class="pcoded-mtext">User Management</span>
+                            <span class="pcoded-mcaret"></span>
+                          </a>
+                          <ul class="pcoded-submenu">
+                            <li [routerLinkActive]="['active']">
+                              <a routerLink='/superadmin/user/add-hospital-admin'>
                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                <span class="pcoded-mtext">{{ asideChildrenSub.name }}</span>
-                                <span *ngFor="let asideChildrenSubBadge of asideChildrenSub.badge" class="pcoded-badge label label-{{ asideChildrenSubBadge.type }}">{{asideChildrenSubBadge.value}}</span>
+                                <span class="pcoded-mtext">Add Hospital Admin</span>
                                 <span class="pcoded-mcaret"></span>
                               </a>
                             </li>
-                          </ng-template>
-                        </ul>
+                            <li [routerLinkActive]="['active']">
+                              <a routerLink='/superadmin/user/add-branch-admin'>
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext">Add Branch Admin</span>
+                                <span class="pcoded-mcaret"></span>
+                              </a>
+                            </li>
+                            <li [routerLinkActive]="['active']">
+                              <a routerLink='/superadmin/user/add-surgeon'>
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext">Add Surgeon</span>
+                                <span class="pcoded-mcaret"></span>
+                              </a>
+                            </li>
+                            <li [routerLinkActive]="['active']">
+                              <a routerLink='/superadmin/user/add-support-staff'>
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext">Add Support Staff</span>
+                                <span class="pcoded-mcaret"></span>
+                              </a>
+                            </li>
+                          </ul>
                       </li>
-                      </ng-template>
-                    </ul>
+
+                      <li [routerLinkActive]="['active']" class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style6" appAccordionLink>
+                        <a class="active" href="javascript:;" appAccordionToggle>
+                          <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                          <span class="pcoded-mtext">Region Management</span>
+                          <span class="pcoded-mcaret"></span>
+                        </a>
+                        <ul class="pcoded-submenu">
+                          <li [routerLinkActive]="['active']">
+                            <a routerLink='/superadmin/region/add-region'>
+                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                              <span class="pcoded-mtext">Add Region</span>
+                              <span class="pcoded-mcaret"></span>
+                            </a>
+                          </li>
+                          
+                        </ul>
+                    </li>
+
+                    <li [routerLinkActive]="['active']" class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style6" appAccordionLink>
+                      <a class="active" href="javascript:;" appAccordionToggle>
+                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                        <span class="pcoded-mtext">Forms Management</span>
+                        <span class="pcoded-mcaret"></span>
+                      </a>
+                      <ul class="pcoded-submenu">
+                        <li [routerLinkActive]="['active']">
+                          <a routerLink='/superadmin/forms/add-form'>
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Add Form</span>
+                            <span class="pcoded-mcaret"></span>
+                          </a>
+                        </li>
+                        
+                      </ul>
                   </li>
-                </ul>
-              </div>
+
+                      </ul>
+                  </div>
               </div>
             </div>
           </nav>
