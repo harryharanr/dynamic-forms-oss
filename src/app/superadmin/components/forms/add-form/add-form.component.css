@@ -1,0 +1,10 @@
+.card .card-header span {
+    color: #9f9f9f;
+    display: inline-block;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.card-block{
+    padding:5px;
+}
