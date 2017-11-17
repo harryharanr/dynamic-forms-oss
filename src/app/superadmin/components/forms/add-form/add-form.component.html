@@ -87,7 +87,9 @@
           <div class="card-footer">
               <!-- <div class="row">
                 <div class="col-md-11"> -->
-                  <button type="submit" class="btn btn-primary float-right" [disabled]="!questions.controls.name.valid || !questions.controls.type.valid" (click)="validateQue(myForm,i)">Validate Question</button>
+                  <button type="submit" class="btn btn-primary float-right" 
+                  [disabled]="!questions.controls.name.valid || !questions.controls.type.valid || submitOption" 
+                  (click)="validateQue(myForm,i)">Validate Question</button>
                 <!-- </div>
               </div> -->
               </div>
@@ -119,16 +121,20 @@
                 </div>
               </div>
               </div>
+              <!-- <div class="card-footer"  *ngIf="optionIndex==j">
+                <button type="submit" class="btn btn-primary pull-right" *ngIf="addOptionBtn==true" (click)="addOption(i)">Add Option</button>
+              </div> -->
             </div>
-            <button type="submit" class="btn btn-primary pull-right" (click)="addOption(i)">Add Option</button>
+            <button type="submit" class="btn btn-primary float-right" (click)="addOption(i)">Add Option</button>
           </div> 
           </div>
            
             
           </div>
-          
-           <button type="submit" *ngIf="submitOption==true" class="btn btn-primary pull-right" (click)="submitTemplate(myForm)">Submit Template</button>  
-            <button type="submit" *ngIf="submitOption==true" class="btn btn-primary pull-right" (click)="addQuestion()">Add Another Question</button>
+          <div class="row">
+           <button type="submit" *ngIf="submitOption==true" [disabled]="!myForm.valid" class="btn btn-primary float-right" (click)="submitTemplate(myForm)">Submit Template</button>  
+            <button type="submit" *ngIf="submitOption==true" class="btn btn-primary float-right" (click)="addQuestion()">Add Another Question</button>
+            </div>
         </div>
 
         

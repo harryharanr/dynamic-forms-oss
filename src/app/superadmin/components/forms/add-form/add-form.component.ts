@@ -11,8 +11,9 @@ export class AddFormComponent implements OnInit {
   public askQuestions:boolean = false;
   public askOptions:boolean = false;
   public submitOption:boolean = false;
+  public addOptionBtn:boolean = false;
   public userIndex:number = 0;
-  
+  public optionIndex:number = 0;
 
   constructor(private _fb: FormBuilder) { }
 
@@ -44,7 +45,8 @@ export class AddFormComponent implements OnInit {
       //console.log(control);
       control.push(this.initOptions());
       console.log(this.myForm);
-      this.askOptions = true;  
+      this.askOptions = true;
+      this.addOptionBtn = true;  
     }
   }
 
@@ -76,11 +78,16 @@ export class AddFormComponent implements OnInit {
 
       addOption(i){
         this.submitOption = true;
+        this.optionIndex++;
         const control = this.myForm.get(`questions.${i}.options`) as FormArray;
         control.push(this.initOptions());
       }
 
       addQuestion(){
+        this.optionIndex = 0;
+        this.submitOption = false;
+        this.addOptionBtn = false;
+        //this.askOptions = false;
         const control = this.myForm.get('questions') as FormArray;
         control.push(this.getQuestions());
         this.userIndex = control.length;
@@ -95,7 +102,7 @@ export class AddFormComponent implements OnInit {
     //pagination logic
     previousPage(index:any){
       if(index>0){
-        this.userIndex = index-1;  
+        this.userIndex = index-1;
       }
     }
 
