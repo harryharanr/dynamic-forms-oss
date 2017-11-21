@@ -6,7 +6,13 @@
       </div>
   </div>
   <hr />
-  <div>
+  <div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="text-center">Design Form</h5>
+      </div>
+    </div>
     <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
       <div class="row">
         <div class="col-md-4">
@@ -36,13 +42,13 @@
 
 
         <div class="row" *ngIf="askQuestions==true">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
+          <!-- <div class="col-md-4"></div> -->
+          <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary" [disabled]="myForm.controls.questions.controls.length<=1" (click)="previousPage(userIndex)">Previous</button>
             {{userIndex}}
             <button type="submit" class="btn btn-primary" [disabled]="myForm.controls.questions.controls.length==userIndex" (click)="nextPage(userIndex)">Next</button>
           </div>
-          <div class="col-md-4"></div>
+          <!-- <div class="col-md-4"></div> -->
         </div>
         <br />
         
@@ -148,12 +154,16 @@
       </form>
       </div>
 
-      <div class="view2">
-     
-     <!-- <form-preview [formPre]="myForm"></form-preview>    -->
-    </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="text-center">Preview Form</h5>
+          </div>
+        </div>
+        <form-preview [formPre]="myForm"></form-preview>   
+      </div>
   
 </div>
-
+</div>
 
 

@@ -37,6 +37,7 @@ import { AddRegionComponent } from './components/region/add-region/add-region.co
 
 import { FormsComponent } from './components/forms/forms.component';
 import { AddFormComponent } from './components/forms/add-form/add-form.component';
+import { PreviewComponent } from './components/forms/PreviewComponent/preview.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AddFormComponent } from './components/forms/add-form/add-form.component
     RegionComponent,
     AddRegionComponent,
     FormsComponent,
-    AddFormComponent
+    AddFormComponent,
+    PreviewComponent
   ],
   imports: [
     CommonModule,
